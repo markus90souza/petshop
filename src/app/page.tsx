@@ -1,8 +1,28 @@
-export default function HomePage() {
+import { Period } from '@/components/period'
+import { APPOINTMENT_DATA } from '@/utils/appointments-data'
+import { groupAppointmentByPeriod } from '@/utils/appointments-utils'
+
+const HomePage = () => {
+  const periods = groupAppointmentByPeriod(APPOINTMENT_DATA)
   return (
-    <>
-      <h1>Home</h1>
-      <p>some</p>
-    </>
+    <div className="bg-background-primary p-6">
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-title-size text-content-primary mb-2">
+            Sua Agenda
+          </h1>
+          <p className="text-paragraph-medium-size text-content-secondary">
+            Aqui você pode ver todos os clientes e serviços agendados para hoje.
+          </p>
+        </div>
+      </div>
+      <div className="pb-24 md:pb-0">
+        {periods.map((period, index) => (
+          <Period period={period} key={index} />
+        ))}
+      </div>
+    </div>
   )
 }
+
+export default HomePage

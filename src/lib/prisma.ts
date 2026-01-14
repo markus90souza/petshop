@@ -1,4 +1,3 @@
-/** biome-ignore-all assist/source/organizeImports: <explanation> */
 import { PrismaClient } from '@/generated/prisma/client'
 import { PrismaPg } from '@prisma/adapter-pg'
 
